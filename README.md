@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 === Recommend ===
 Contributors: mattlitzinger
 Tags: recommend, like, heart, thumbs up
@@ -9,17 +8,6 @@ Requires PHP: 7.0
 Stable tag: 0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-=======
-# Recommend 
-Contributors: mattlitzinger  
-Tags: recommend, like, heart, thumbs up  
-Donate link: https://paypal.me/mattlitzinger  
-Requires at least: 4.7  
-Tested up to: 5.7  
-Requires PHP: 7.0  
-License: GPLv2 or later  
-License URI: https://www.gnu.org/licenses/gpl-2.0.html  
->>>>>>> e2db497b217b9f9fa3b5129ab98e05cd4eb5a1b6
 
 Add like/recommend functionality to posts and pages. This metric can then be used to return more relevant search results or a collection of most liked posts/pages.   
 
