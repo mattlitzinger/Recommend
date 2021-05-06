@@ -1,4 +1,4 @@
-=== Recommend ===
+# Recommend 
 Contributors: mattlitzinger
 Tags: recommend, like, heart, thumbs up
 Donate link: https://paypal.me/mattlitzinger
@@ -10,13 +10,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Add like/recommend functionality to posts and pages. This metric can then be used to return more relevant search results or a collection of most liked posts/pages. 
 
-== Description ==
-Features: 
+## Description
+*Features:* 
 * Display the number of likes on a post
 * Saves cookie to disable repeat voting on the same post
 * Add the like count/link to any page using shortcodes
 
-Advanced Options: 
+*Advanced Options:* 
 * Set label text for count (singular and plural)
 * Disable labels text for count site-wide
 * Choose between a \"Thumbs Up\" or a \"Heart\" icon
