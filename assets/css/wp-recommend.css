@@ -1,0 +1,33 @@
+a.wp-recommend-likes {
+	display: block !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border-bottom: 0 !important;
+	text-decoration: none !important;
+	color: #b4b4b4 !important;
+	cursor: pointer;
+}
+
+a.wp-recommend-likes:hover, 
+a.wp-recommend-likes:focus {
+	color: #5f5f5f !important;
+}
+
+a.wp-recommend-likes svg.wp-recommend-likes-icon {
+	position: relative;
+	top: 2px;
+	display: inline-block !important;
+	width: 16px;
+	height: 16px;
+	fill: #b4b4b4;
+}
+
+a.wp-recommend-likes:hover svg.wp-recommend-likes-icon, 
+a.wp-recommend-likes:focus svg.wp-recommend-likes-icon {
+	fill: #5f5f5f !important;
+}
+
+a.wp-recommend-likes span.wp-recommend-likes-count {
+	display: inline-block !important;
+	margin-left: 6px;
+}
