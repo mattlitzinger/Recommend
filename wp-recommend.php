@@ -138,6 +138,7 @@
 		$options = get_option('wp_recommend_settings');
 		if( isset($_COOKIE['wp_recommend_likes']) ) {
 			$user_liked_posts = json_decode( $_COOKIE['wp_recommend_likes'] );
+			$user_liked_posts = array_map( 'esc_attr', $user_liked_posts );
 		} else {
 			$user_liked_posts = array();
 		}
