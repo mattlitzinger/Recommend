@@ -1,6 +1,7 @@
 # Recommend 
 
-Add like/recommend functionality to posts and pages. This metric can then be used to return more relevant search results or a collection of most liked posts/pages.   
+Add like/recommend functionality to posts and pages. This metric can then be used to return more relevant search results or a collection of most liked posts/pages.  
+  
 -----------------------
 
 * Readme : https://github.com/mattlitzinger/Recommend/blob/master/README.md
