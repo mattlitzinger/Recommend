@@ -1,0 +1,17 @@
+= Changelog archive =
+
+= 0.6 =
+
+Release Date: June 10th, 2021
+
+* Changes:
+	* Updated Readme to include better set up instructions 
+	* Renamed shortcodes (breaking change)
+	* General code cleanup (commments/spacing)
+
+* New features:
+	* Admin option to show/hide like count after the content for all posts 
+
+= 0.5 =
+
+* Initial beta release.

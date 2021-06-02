@@ -6,7 +6,7 @@
 function wp_recommend_admin_page(){
 	?>
 	<div class="wrap">
-		<h2>WP Recommend</h2>
+		<h2>WP Recommend Settings</h2>
 		<form method="post" action="options.php"> 
 			<?php settings_fields('wp_recommend_settings'); ?>
 			<?php do_settings_sections('wp_recommend_settings'); ?>
@@ -32,7 +32,7 @@ function wp_recommend_admin_page(){
 }
 
 function wp_recommend_admin_menu(){
-	add_options_page('WP Recommend', 'WP Recommend', 'manage_options', 'wp-recommend', 'wp_recommend_admin_page');
+	add_options_page('Recommend', 'Recommend', 'manage_options', 'recommend', 'wp_recommend_admin_page');
 }
 add_action( 'admin_menu', 'wp_recommend_admin_menu' );
 
@@ -73,11 +73,18 @@ function wp_recommend_register_settings() {
       'id' => 'likes_plural_label',
   ) );
 
+  // Show After Content Field
+  add_settings_field( 'wp_recommend_show_after_content', 'Show After Content', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
+      'type' => 'checkbox',
+      'id' => 'show_after_content',
+      'desc' => 'Show the like count and action button below the content of each post.'
+  ) );
+
   // Remove CSS Field
   add_settings_field( 'wp_recommend_remove_css', 'Remove CSS', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
       'type' => 'checkbox',
       'id' => 'remove_css',
-      'desc' => 'This will disable all plugin CSS. Custom styles below will still be used.'
+      'desc' => 'Disable all plugin CSS styles. Any custom styles below will still be used.'
   ) );
 
   // Custom Styles Field
@@ -156,6 +163,12 @@ function wp_recommend_sanitize($input){
     $new_input['likes_plural_label'] = '';
   }
 
+  if( !empty( $input['show_after_content'] ) ){
+    $new_input['show_after_content'] = absint( $input['show_after_content'] );
+  } else { 
+    $new_input['show_after_content'] = 0;
+  }
+
   if( !empty( $input['remove_css'] ) ){
     $new_input['remove_css'] = absint( $input['remove_css'] );
   } else { 
@@ -211,7 +224,7 @@ function wp_recommend_settings_link( $links ) {
   // Build the URL
   $url = esc_url( add_query_arg(
     'page',
-    'wp-recommend',
+    'recommend',
     get_admin_url() . 'options-general.php'
   ) );
   // Create the link HTML
@@ -223,5 +236,5 @@ function wp_recommend_settings_link( $links ) {
   );
   return $links;
 }
-add_filter( 'plugin_action_links_wp-recommend/wp-recommend.php', 'wp_recommend_settings_link' );
+add_filter( 'plugin_action_links_recommend/recommend.php', 'wp_recommend_settings_link' );
 

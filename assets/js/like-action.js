@@ -5,12 +5,12 @@
 		var liked_posts = [];
 
 		// Check if cookie has been set
-		if( getCookie('wp_recommend_likes') != null ) {
-			liked_posts = JSON.parse( getCookie('wp_recommend_likes') );
+		if( getCookie('recommend_likes') != null ) {
+			liked_posts = JSON.parse( getCookie('recommend_likes') );
 		}
 
 		// Create an click event
-		$('.wp-recommend-likes').click(function(){
+		$('.recommend-likes').click(function(){
 			el = $(this);
 			post_id = el.data('post-id');
 
@@ -20,16 +20,15 @@
 	    	if( $.inArray(post_id, liked_posts) == -1) {
     			// Add post ID to the 'liked_posts' array
     			liked_posts.push(post_id); 
-    			// Update the 'wp_recommend_likes' cookie
-    			setCookie('wp_recommend_likes', JSON.stringify(liked_posts), 30); 
+    			// Update the 'recommend_likes' cookie
+    			setCookie('recommend_likes', JSON.stringify(liked_posts), 30); 
     			// Make AJAX call to update the like count in the database
     			wp_recommend_increase_like_count( post_id ); 
 	    	} else {
-	    		console.log('howdy');
 		    	// Find the index of the post_id in the lided_posts array and remove it from the array
 	    		liked_posts.splice(liked_posts.indexOf( post_id ), 1); 
-	    		// Update the 'wp_recommend_likes' cookie
-	    		setCookie('wp_recommend_likes', JSON.stringify(liked_posts), 30);
+	    		// Update the 'recommend_likes' cookie
+	    		setCookie('recommend_likes', JSON.stringify(liked_posts), 30);
 	    		// Make AJAX call to update the like count in the database 
 	    		wp_recommend_decrease_like_count( post_id );  
 	    	}
@@ -37,8 +36,8 @@
 	    } else { 
 	    	// Add post ID to the 'liked_posts' array
     		liked_posts.push(post_id); 
-    		// Create new 'wp_recommend_likes' cookie
-    		setCookie('wp_recommend_likes', JSON.stringify(liked_posts), 30);
+    		// Create new 'recommend_likes' cookie
+    		setCookie('recommend_likes', JSON.stringify(liked_posts), 30);
     		// Make AJAX call to update the like count in the database
     		wp_recommend_increase_like_count( post_id ); 
 	    }
@@ -54,14 +53,14 @@
 					post_id: post_id,
 				},
 				beforeSend: function() {
-					el.children('.wp-recommend-likes-count').html('-');
+					el.children('.recommend-likes-count').html('-');
 				},
 				success: function(data){
 					var data = JSON.parse(data);
 					el.addClass('liked');
 					el.attr('title', 'Unlike this');
-					el.children('.wp-recommend-likes-count').html(data['new_likes']);
-					el.children('.wp-recommend-likes-label').html(data['likes_label']);
+					el.children('.recommend-likes-count').html(data['new_likes']);
+					el.children('.recommend-likes-label').html(data['likes_label']);
 				}
 			});
 		}
@@ -76,14 +75,14 @@
 					post_id: post_id,
 				},
 				beforeSend: function() {
-					el.children('.wp-recommend-likes-count').html('-');
+					el.children('.recommend-likes-count').html('-');
 				},
 				success: function(data){
 					var data = JSON.parse(data);
 					el.removeClass('liked');
 					el.attr('title', 'Like this');
-					el.children('.wp-recommend-likes-count').html(data['new_likes']);
-					el.children('.wp-recommend-likes-label').html(data['likes_label']);
+					el.children('.recommend-likes-count').html(data['new_likes']);
+					el.children('.recommend-likes-label').html(data['likes_label']);
 				}
 			});
 		}

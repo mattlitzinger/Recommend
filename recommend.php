@@ -18,6 +18,7 @@
         'likes_disable_labels' => 0,
         'likes_singular_label' => 'Like',
         'likes_plural_label' => 'Likes',
+        'show_after_content' => 1,
         'remove_css' => 0,
         'custom_styles' => '',
       );
@@ -144,16 +145,16 @@
 		}
 		$current_like_count = wp_recommend_get_like_count($post->ID);
 		if( ( is_array($user_liked_posts) && in_array($post->ID, $user_liked_posts) ) || ( is_integer($user_liked_posts) && $post->ID == $user_liked_posts ) ) {
-			$html = '<a class="wp-recommend-likes liked" title="Unlike This" data-post-id="' . $post->ID .'">';
+			$html = '<button class="recommend-likes liked" title="Unlike This" data-post-id="' . $post->ID .'">';
 		} else {
-			$html = '<a class="wp-recommend-likes" title="Like This" data-post-id="' . $post->ID .'">';
+			$html = '<button class="recommend-likes" title="Like This" data-post-id="' . $post->ID .'">';
 		}
 		if($options['icon_type'] == 'heart') {
-			$html .= '<svg class="wp-recommend-likes-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 492.7 492.7" xml:space="preserve"><path d="M492.7 166c0-73.5-59.6-133.1-133.1-133.1 -48 0-89.9 25.5-113.3 63.6 -23.4-38.1-65.3-63.6-113.3-63.6C59.6 33 0 92.5 0 166c0 40 17.7 75.8 45.7 100.2l188.5 188.6c3.2 3.2 7.6 5 12.1 5 4.6 0 8.9-1.8 12.1-5l188.5-188.6C475 241.8 492.7 206 492.7 166z"/></svg>';
+			$html .= '<svg class="recommend-likes-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 492.7 492.7" xml:space="preserve"><path d="M492.7 166c0-73.5-59.6-133.1-133.1-133.1 -48 0-89.9 25.5-113.3 63.6 -23.4-38.1-65.3-63.6-113.3-63.6C59.6 33 0 92.5 0 166c0 40 17.7 75.8 45.7 100.2l188.5 188.6c3.2 3.2 7.6 5 12.1 5 4.6 0 8.9-1.8 12.1-5l188.5-188.6C475 241.8 492.7 206 492.7 166z"/></svg>';
 		} else {
-			$html .= '<svg class="wp-recommend-likes-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 241.7 241.7" xml:space="preserve"><path d="M208.6 133.6c10.3 0.5 19.1-7.7 19.6-18.2 0.5-10.5-6.8-20-17.2-20.4l-68.7-8.6c0 0 14.3-24 14.3-59.5C156.6 3.2 139.7 0 129.8 0c-7.8 0-9.9 15.2-9.9 15.2h0c-1.8 9.7-4.1 18.2-12.1 33.8C98.8 66.5 86.6 64.8 72.3 80.4c-2.5 2.7-5.9 7.3-9.2 12.9 -0.3 0.3-0.5 0.7-0.8 1.3 -0.3 0.7-0.6 1.2-1 1.8 -0.5 1-1.1 2-1.6 3.1 -8.8 8.8-22.6 7.9-28.4 7.9 -11.7 0-17.9 6.8-17.9 17.9l0 81.8c0 12.4 5.1 16.6 17.9 16.6h17.9c9 0 16.1 5.2 26.8 8.9 14.8 5.1 36.8 9 74.8 9 6.6 0 27.3 0 27.3 0 6.3 0 11.4-2.9 15-6.4 1.4-1.3 2.8-3.2 3.5-7 0.1-0.6 0.2-3 0.2-3.3 0.5-10.7-6-14.6-9.7-15.8 0.1 0 0-0.1 0.2-0.1l11.7 0.5c10.4 0.5 20.6-7 20.6-19.7 0-10.5-8.5-17.9-18.8-18.4l6.2 0.3c10.4 0.5 19.1-7.7 19.6-18.2C227 143 219 134.1 208.6 133.6z"/></svg>';
+			$html .= '<svg class="recommend-likes-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 241.7 241.7" xml:space="preserve"><path d="M208.6 133.6c10.3 0.5 19.1-7.7 19.6-18.2 0.5-10.5-6.8-20-17.2-20.4l-68.7-8.6c0 0 14.3-24 14.3-59.5C156.6 3.2 139.7 0 129.8 0c-7.8 0-9.9 15.2-9.9 15.2h0c-1.8 9.7-4.1 18.2-12.1 33.8C98.8 66.5 86.6 64.8 72.3 80.4c-2.5 2.7-5.9 7.3-9.2 12.9 -0.3 0.3-0.5 0.7-0.8 1.3 -0.3 0.7-0.6 1.2-1 1.8 -0.5 1-1.1 2-1.6 3.1 -8.8 8.8-22.6 7.9-28.4 7.9 -11.7 0-17.9 6.8-17.9 17.9l0 81.8c0 12.4 5.1 16.6 17.9 16.6h17.9c9 0 16.1 5.2 26.8 8.9 14.8 5.1 36.8 9 74.8 9 6.6 0 27.3 0 27.3 0 6.3 0 11.4-2.9 15-6.4 1.4-1.3 2.8-3.2 3.5-7 0.1-0.6 0.2-3 0.2-3.3 0.5-10.7-6-14.6-9.7-15.8 0.1 0 0-0.1 0.2-0.1l11.7 0.5c10.4 0.5 20.6-7 20.6-19.7 0-10.5-8.5-17.9-18.8-18.4l6.2 0.3c10.4 0.5 19.1-7.7 19.6-18.2C227 143 219 134.1 208.6 133.6z"/></svg>';
 		}
-		$html .= '<span class="wp-recommend-likes-count">' . $current_like_count . '</span>';
+		$html .= '<span class="recommend-likes-count">' . $current_like_count . '</span>';
 
 		// Get the value of disable labels checkbox
 		if(isset($options['likes_disable_labels'])) {
@@ -164,7 +165,7 @@
 	
 		// Check if labels have been disabled or that both exist
 		if($disable_labels != 1 && $options['likes_singular_label'] && $options['likes_plural_label']) {
-			$html .= ' <span class="wp-recommend-likes-label">';
+			$html .= ' <span class="recommend-likes-label">';
 			if($current_like_count == 1) {
 			  $html .= $options['likes_singular_label'];
 			} else {
@@ -173,19 +174,31 @@
 			$html .= '</span>';
 		}
 		
-		$html .= '</a>';
-		echo $html;
+		$html .= '</button>';
+		return $html;
 	}
+
+	/**
+	 * Display the number of likes after the post content
+	 */ 
+	function wp_recommend_show_likes_after_content($content) {
+		$options = get_option('wp_recommend_settings');
+		if( isset($options['show_after_content']) && $options['show_after_content'] == 1 ) {
+			$content .= wp_recommend_show_likes();
+		}
+		return $content;
+	}
+	add_filter('the_content', 'wp_recommend_show_likes_after_content');
 
 	/**
 	 * Shortcode to display recommend button/count on front-end
 	 */ 
 	function wp_recommend_likes_shortcode() {
 		ob_start();
-	  wp_recommend_show_likes();
+	  echo wp_recommend_show_likes();
 	  return ob_get_clean();
 	}
-	add_shortcode('wp-recommend-likes', 'wp_recommend_likes_shortcode');
+	add_shortcode('recommend-likes', 'wp_recommend_likes_shortcode');
 
 	/**
 	 * Shortcode to display list of most recommended posts on front-end
@@ -213,10 +226,15 @@
 
 	  return $html;
 	}
-	add_shortcode('wp-recommend-liked-posts', 'wp_recommend_most_liked_posts_shortcode');
+	add_shortcode('recommend-liked-posts', 'wp_recommend_most_liked_posts_shortcode');
 
 	/**
 	 * Admin page for this plugin.
 	 */
-	require_once plugin_dir_path(__FILE__) . '/admin.php';
+	require_once plugin_dir_path(__FILE__) . '/inc/admin.php';
+
+	/**
+	 * REST API Endpoints.
+	 */
+	// require_once plugin_dir_path(__FILE__) . '/inc/rest-api.php';
 

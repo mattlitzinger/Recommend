@@ -25,7 +25,9 @@ Add like/recommend functionality to posts and pages. This metric can then be use
 * Disable plugin CSS or add custom styling rules 
 
 To display the like count/link in your template, add the below code: 
-`<?php if( function_exists('wp_recommend_show_likes') ) wp_recommend_show_likes(); ?>`
+```
+<?php if( function_exists('wp_recommend_show_likes') ) wp_recommend_show_likes(); ?>
+```
 
-Or use the shortcode: 
-`Shortcode [wp-recommend-likes]`
+Or use the shortcode:  
+`Shortcode [recommend-likes]`
