@@ -6,7 +6,7 @@
 function wp_recommend_admin_page(){
 	?>
 	<div class="wrap">
-		<h2>WP Recommend Settings</h2>
+		<h2>Recommend Settings</h2>
 		<form method="post" action="options.php"> 
 			<?php settings_fields('wp_recommend_settings'); ?>
 			<?php do_settings_sections('wp_recommend_settings'); ?>
@@ -185,12 +185,11 @@ function wp_recommend_sanitize($input){
  * Add like count as column in admin list view
  */
 function wp_recommend_admin_columns( $columns ) {
-  $columns['like_count'] = '<svg fill="#3c434a" width="14px" height="14px" class="wp-recommend-likes-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 492.7 492.7" xml:space="preserve"><path d="M492.7 166c0-73.5-59.6-133.1-133.1-133.1 -48 0-89.9 25.5-113.3 63.6 -23.4-38.1-65.3-63.6-113.3-63.6C59.6 33 0 92.5 0 166c0 40 17.7 75.8 45.7 100.2l188.5 188.6c3.2 3.2 7.6 5 12.1 5 4.6 0 8.9-1.8 12.1-5l188.5-188.6C475 241.8 492.7 206 492.7 166z"/></svg>';
+  $columns['like_count'] = 'Likes';
   return $columns;
 }
 add_filter( 'manage_post_posts_columns', 'wp_recommend_admin_columns' );
 add_filter( 'manage_page_posts_columns', 'wp_recommend_admin_columns' );
-add_filter( 'manage_work_posts_columns', 'wp_recommend_admin_columns' );
 
 /**
  * Add content to the like count column
@@ -205,7 +204,6 @@ function wp_recommend_admin_column_data( $column, $post_id ) {
 }
 add_action( 'manage_post_posts_custom_column', 'wp_recommend_admin_column_data', 10, 2 );
 add_action( 'manage_page_posts_custom_column', 'wp_recommend_admin_column_data', 10, 2 );
-add_action( 'manage_work_posts_custom_column', 'wp_recommend_admin_column_data', 10, 2 );
 
 /**
  * Add style block for like count column
