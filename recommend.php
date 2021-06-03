@@ -214,7 +214,7 @@
 	add_shortcode('recommend-likes', 'wp_recommend_likes_shortcode');
 
 	/**
-	 * Shortcode to display list of most recommended posts on front-end
+	 * Shortcode to display list of most liked posts on front-end
 	 */ 
 	function wp_recommend_most_liked_posts_shortcode($atts) {
 		$post_type = isset($atts['post_type']) ? $atts['post_type'] : 'post';
