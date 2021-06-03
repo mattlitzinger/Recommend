@@ -5,7 +5,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
   exit();
 }
 
-// Function to uninstall the 'WP Recommend' plugin
+// Function to uninstall the 'Recommend' plugin
 function wp_recommend_delete_plugin() {
 
   $wp_recommend_posts = get_posts( 

@@ -18,6 +18,7 @@
         'likes_disable_labels' => 0,
         'likes_singular_label' => 'Like',
         'likes_plural_label' => 'Likes',
+        'included_post_types' => '',
         'show_after_content' => 1,
         'remove_css' => 0,
         'custom_styles' => '',
@@ -183,8 +184,20 @@
 	 */ 
 	function wp_recommend_show_likes_after_content($content) {
 		$options = get_option('wp_recommend_settings');
-		if( isset($options['show_after_content']) && $options['show_after_content'] == 1 ) {
-			$content .= wp_recommend_show_likes();
+		$included_post_types = ($options['included_post_types'] !== '') ? explode(',', str_replace(' ', '', $options['included_post_types'])) : array();
+		if( 
+			( 
+				is_single() || 
+				is_page() 
+			) && 
+			(  
+				in_array( get_post_type(), $included_post_types) || 
+				empty($included_post_types)
+			) &&
+			isset($options['show_after_content']) && 
+			$options['show_after_content'] == 1 
+		) {
+			$content .= '<p>' . wp_recommend_show_likes() . '</p>';
 		}
 		return $content;
 	}

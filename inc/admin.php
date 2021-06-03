@@ -48,6 +48,7 @@ function wp_recommend_register_settings() {
   add_settings_field( 'wp_recommend_likes_icon_type', 'Icon Type', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
       'type' => 'radio_button',
       'id' => 'icon_type',
+      'desc' => '',
       'values' => array(
       	'heart' => 'Heart',
       	'thumbs_up' => 'Thumbs Up',
@@ -65,12 +66,14 @@ function wp_recommend_register_settings() {
   add_settings_field( 'wp_recommend_likes_singular_label', 'Label (Singular)', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
       'type' => 'label_text',
       'id' => 'likes_singular_label',
+      'desc' => ''
   ) );
 
   // Label (Plural) Field
   add_settings_field( 'wp_recommend_likes_plural_label', 'Label (Plural)', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
       'type' => 'label_text',
       'id' => 'likes_plural_label',
+      'desc' => ''
   ) );
 
   // Show After Content Field
@@ -78,6 +81,14 @@ function wp_recommend_register_settings() {
       'type' => 'checkbox',
       'id' => 'show_after_content',
       'desc' => 'Show the like count and action button below the content of each post.'
+  ) );
+
+  // Included Post Types
+  add_settings_field( 'wp_recommend_included_post_types', 'Included Post Types', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
+      'type' => 'label_text',
+      'id' => 'included_post_types',
+      'placeholder' => 'page, post, recipe',
+      'desc' => 'By default, the like count is shown on all post types. List specifc post types here as a comma seperated list.'
   ) );
 
   // Remove CSS Field
@@ -91,6 +102,7 @@ function wp_recommend_register_settings() {
   add_settings_field( 'wp_recommend_custom_styles', 'Custom Styles', 'wp_recommends_display_setting', 'wp_recommend_settings', 'wp_recommend_settings_section', array(
       'type' => 'textarea',
       'id' => 'custom_styles',
+      'desc' => ''
   ) );
 
   // Register the settings with validation callback
@@ -116,7 +128,10 @@ function wp_recommends_display_setting($args){
     case 'label_text':  
       $options[$id] = stripslashes($options[$id]);  
       $options[$id] = esc_attr( $options[$id]);  
-      echo '<input class="regular-text" type="text" id="'.$id.'" name="'.$option_name.'['.$id.']" value="'.$options[$id].'" '. disabled(1, $options['likes_disable_labels'], false ) .'/>'; 
+      $placeholder = (isset($placeholder)) ? $placeholder : '';
+      $html = '<input class="regular-text" type="text" id="'.$id.'" name="'.$option_name.'['.$id.']" value="'.$options[$id].'" placeholder="'.$placeholder.'" '. disabled(1, $options['likes_disable_labels'], false ) .'/>'; 
+      $html .= ($desc) ? '<p class="description">' . esc_html( $desc ) .'</p>' : '';
+      echo $html;
       break; 
     case 'textarea':  
       $options[$id] = stripslashes($options[$id]);  
@@ -161,6 +176,12 @@ function wp_recommend_sanitize($input){
     $new_input['likes_plural_label'] = sanitize_text_field( $input['likes_plural_label'] );
   } else { 
     $new_input['likes_plural_label'] = '';
+  }
+
+  if( !empty( $input['included_post_types'] ) ){
+    $new_input['included_post_types'] = sanitize_text_field( $input['included_post_types'] );
+  } else { 
+    $new_input['included_post_types'] = '';
   }
 
   if( !empty( $input['show_after_content'] ) ){
