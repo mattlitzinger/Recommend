@@ -1,8 +1,8 @@
 <?php
 	/*
 	Plugin Name: Recommend
-	Description: Add like/recommend functionality to posts and pages. This metric can then be used to return more relevant search results or a collection of most liked posts/pages.
-	Version: 0.5
+	Description: Recommend allows you to add a like user action to your content. Unlike social sharing or commenting, the like action is simple and intuitive. The like count can then be used to return more relevant search results or a collection of most liked posts. 
+	Version: 0.6
 	Author: Matt Litzinger
 	Author URI: http://mlitzinger.com
 	License: GPL2
