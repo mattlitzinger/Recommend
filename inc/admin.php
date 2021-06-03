@@ -129,7 +129,8 @@ function wp_recommends_display_setting($args){
       $options[$id] = stripslashes($options[$id]);  
       $options[$id] = esc_attr( $options[$id]);  
       $placeholder = (isset($placeholder)) ? $placeholder : '';
-      $html = '<input class="regular-text" type="text" id="'.$id.'" name="'.$option_name.'['.$id.']" value="'.$options[$id].'" placeholder="'.$placeholder.'" '. disabled(1, $options['likes_disable_labels'], false ) .'/>'; 
+      $disabled = ( $options['likes_disable_labels'] == 1 && ( $id == 'likes_singular_label' || $id == 'likes_plural_label' ) ) ? true : false;
+      $html = '<input class="regular-text" type="text" id="'.$id.'" name="'.$option_name.'['.$id.']" value="'.$options[$id].'" placeholder="'.$placeholder.'" '. disabled(true, $disabled, false ) .'/>'; 
       $html .= ($desc) ? '<p class="description">' . esc_html( $desc ) .'</p>' : '';
       echo $html;
       break; 
