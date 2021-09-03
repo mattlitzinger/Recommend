@@ -3,9 +3,9 @@ Contributors: mattlitzinger
 Tags: recommend, like, heart, thumbs up
 Donate link: https://paypal.me/mattlitzinger
 Requires at least: 4.7
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 0.6
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,10 @@ By default, the like count will be displayed below the content for individual po
 
 If you'd rather display the like count in your template files, use the below code:  
 
-``<?php if( function_exists('wp_recommend_show_likes') ) wp_recommend_show_likes(); ?>
+    <?php 
+        if( function_exists('wp_recommend_show_likes') ) 
+            wp_recommend_show_likes(); 
+    ?>  
 
 == Shortcodes == 
 
@@ -39,6 +42,13 @@ The following shortcode will display a list of most liked posts. There are two o
 ``[recommend-liked-posts post_type="post" posts_per_page="5"]
 
 == Changelog ==
+Fixed issue w/ disabled admin field
+
+= 0.6.1 =
+*Release Date: June 3rd, 2021*
+
+* Fixes:
+	* Fixed issue w/ disabled admin field
 
 = 0.6 =
 *Release Date: June 3rd, 2021*

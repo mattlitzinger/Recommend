@@ -2,7 +2,7 @@
 	/*
 	Plugin Name: Recommend
 	Description: Recommend allows you to add a like user action to your content. Unlike social sharing or commenting, the like action is simple and intuitive. The like count can then be used to return more relevant search results or a collection of most liked posts. 
-	Version: 0.6
+	Version: 0.6.1
 	Author: Matt Litzinger
 	Author URI: http://mlitzinger.com
 	License: GPL2
