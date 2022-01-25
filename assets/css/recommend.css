@@ -2,6 +2,11 @@
   --wp-recommend-icon-color: #AD000E;
 }
 
+button.recommend-likes {
+	display: flex;
+	align-items: center;
+}
+
 button.recommend-likes svg.recommend-likes-icon {
 	position: relative;
 	display: inline-block;
