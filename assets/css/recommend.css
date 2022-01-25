@@ -1,0 +1,21 @@
+:root {
+  --wp-recommend-icon-color: #AD000E;
+}
+
+button.recommend-likes svg.recommend-likes-icon {
+	position: relative;
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	fill: var(--wp-recommend-icon-color);
+}
+
+button.recommend-likes:hover svg.recommend-likes-icon, 
+button.recommend-likes:focus svg.recommend-likes-icon {
+	fill: var(--wp-recommend-icon-color);
+}
+
+button.recommend-likes span.recommend-likes-count {
+	display: inline-block;
+	margin-left: 0.5rem;
+}

@@ -2,9 +2,9 @@
 	/*
 	Plugin Name: Recommend
 	Description: Recommend allows you to add a like user action to your content. Unlike social sharing or commenting, the like action is simple and intuitive. The like count can then be used to return more relevant search results or a collection of most liked posts. 
-	Version: 0.6.1
+	Version: 0.6.2
 	Author: Matt Litzinger
-	Author URI: http://mlitzinger.com
+	Author URI: http://litzdigital.com
 	License: GPL2
 	*/
 
@@ -34,7 +34,7 @@
 	function wp_recommend_add_frontend_script() {
 		$options = get_option('wp_recommend_settings');
 		if($options['remove_css'] != 1){
-			wp_register_style('wp-recommend-css', plugin_dir_url(__FILE__) . 'assets/css/wp-recommend.css');
+			wp_register_style('wp-recommend-css', plugin_dir_url(__FILE__) . 'assets/css/recommend.css');
 			wp_enqueue_style('wp-recommend-css');
 		}
 		wp_register_script('wp-recommend-js', plugin_dir_url(__FILE__) . 'assets/js/like-action.js', array('jquery'), '0.5.0', true);

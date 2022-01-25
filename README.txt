@@ -3,7 +3,7 @@ Contributors: mattlitzinger
 Tags: recommend, like, heart, thumbs up
 Donate link: https://paypal.me/mattlitzinger
 Requires at least: 4.7
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
 Stable tag: 0.6.1
 License: GPLv2 or later
@@ -42,7 +42,11 @@ The following shortcode will display a list of most liked posts. There are two o
 ``[recommend-liked-posts post_type="post" posts_per_page="5"]
 
 == Changelog ==
-Fixed issue w/ disabled admin field
+
+= 0.6.2 =
+*Release Date: January 25rd, 2022*
+
+* Updated to support WordPress 5.9 release
 
 = 0.6.1 =
 *Release Date: June 3rd, 2021*
