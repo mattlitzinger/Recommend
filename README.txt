@@ -3,9 +3,9 @@ Contributors: mattlitzinger
 Tags: recommend, like, heart, thumbs up
 Donate link: https://paypal.me/mattlitzinger
 Requires at least: 4.7
-Tested up to: 5.9
+Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 0.6.1
+Stable tag: 0.6.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,14 @@ The following shortcode will display a list of most liked posts. There are two o
 ``[recommend-liked-posts post_type="post" posts_per_page="5"]
 
 == Changelog ==
+
+= 0.6.3 =
+*Release Date: August 9th, 2022*
+
+* Updated to support WordPress 6.0.1 release
+
+* Fixes:
+	* Added `in_the_loop()` and `is_main_query()` conditionals for displaying like count after post content
 
 = 0.6.2 =
 *Release Date: January 25rd, 2022*
